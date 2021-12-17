@@ -30,7 +30,7 @@ public class MemberDaoTest {
 	@Autowired
 	MemberDao  memberDao;
 	
-	@Test
+	//@Test
 	public void test_insert() {
 		  String id = UUID.randomUUID().toString();
 		Member member=new Member();
