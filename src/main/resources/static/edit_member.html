@@ -216,7 +216,7 @@
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        // alert('submit!');
+                        //调用更新操作
                         axios.post('/member/register', this.ruleForm).then(function (response) {
                             //得到响应数据
                             var res = response.data;
@@ -249,6 +249,8 @@
         	var member_id = url.searchParams.get("id");
         	
         	console.log("===============22============================"+member_id)
+        	
+        	this.ruleForm.nickname="one_example";
         
         }
 
