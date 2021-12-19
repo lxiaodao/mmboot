@@ -28,6 +28,15 @@ public class MemberController extends BaseController {
 	@Autowired
 	MemberService memberService;
     
+
+	@RequestMapping(value="edit",method = RequestMethod.POST)
+	@ResponseBody
+	public Result edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Member member = getData(request, Member.class);
+        boolean flag = memberService.edit(member);
+        return new Result("修改成功！", null);
+    }
+	
 	@RequestMapping(value="register",method = RequestMethod.POST)
 	@ResponseBody
     public Result register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,6 +44,16 @@ public class MemberController extends BaseController {
         boolean flag = memberService.register(member);
         return new Result("注册成功！", null);
     }
+	
+	@RequestMapping(value="query", method = RequestMethod.GET)
+	@ResponseBody
+	public Result query(HttpServletRequest request, HttpServletResponse response) throws  ServletException, IOException {
+		String id = request.getParameter("member_id");
+		Member member = memberService.query(id);
+		return new Result("查询成功！", member);
+		
+	}
+	
 	@RequestMapping(value="find",method = RequestMethod.GET)
 	@ResponseBody
 	 public Result find(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -30,4 +30,8 @@ public interface MemberService {
     String getLoginInfo(String id);
 
     boolean logout(String id);
+
+	Member query(String id);
+
+	boolean edit(Member member);
 }

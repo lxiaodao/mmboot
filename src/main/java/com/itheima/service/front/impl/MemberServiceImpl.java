@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.itheima.dao.MemberDao;
 import com.itheima.domain.Member;
-
+import com.itheima.mapper.MemberMapper;
 import com.itheima.service.front.MemberService;
 import com.itheima.utils.JedisUtils;
 import com.itheima.utils.MD5Util;
@@ -23,6 +23,9 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	MemberDao memberDao;
+	@Autowired
+	MemberMapper memberMapper;
+	
     @Override
     @Transactional
     public boolean register(Member member) {      
@@ -79,5 +82,20 @@ public class MemberServiceImpl implements MemberService {
 	public List<Member> find() {
 		
 		return this.memberDao.findAll(null, null);
+	}
+
+	@Override
+	public Member query(String id) {
+		
+		return memberMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public boolean edit(Member member) {
+      
+        //调用Dao层操作
+        int row = memberDao.update(member);
+        //提交事务
+        return row>0;
 	}
 }
