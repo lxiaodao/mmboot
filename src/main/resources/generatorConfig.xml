@@ -37,7 +37,7 @@
         userId="sa" /> -->
 	<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
 			connectionURL="jdbc:mysql://127.0.0.1:3306/heima_mm?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC" userId="root"
-			password="123456" />
+			password="12345678" />
 
     <javaModelGenerator targetPackage="com.itheima.domain" targetProject="./src/main/java">
       <property name="enableSubPackages" value="true" />
