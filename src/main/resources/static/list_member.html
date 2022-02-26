@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>黑马面面</title>
+    <link rel="stylesheet" href="/css/tt.css">
+    
+    <script src="./js/vue.js" type="text/javascript"></script>
+    <script src="./js/vue-router.js" type="text/javascript"></script>
+    <script src="./js/axios-0.18.0.js" type="text/javascript"></script>
+    <script src="./element-ui/lib/index.js"></script>
+   
+</head>
+<body>
+<div id="app_user_list">
+    <div class="top">
+        <span class="top-right"  id="register" style="display: none">
+            <a href="./register.html" style="color:white">注册</a>
+        </span>
+
+        <span class="top-right" id="login" style="display: none">
+            <a href="./login.html" style="color:white">登录</a>
+        </span>
+
+        <span class="top-right"  id="exit" style="display: none">
+            <a href="#" @click="logout()" style="color:white">退出</a>
+        </span>
+
+        <span class="top-right"  id="myexam" style="display: none">
+            <a href="./history.html" style="color:white">历史测试</a>
+        </span>
+
+        <span class="top-right" id="exam" style="display: none">
+            <a href="./paper.html" style="color:white">开始测试</a>
+        </span>
+
+        <span class="top-right" id="nickname" style="display: none">
+                               你好
+        </span>
+    </div>
+
+    <div class="container">
+    <div class="left">
+        <a>
+            <img src="/img/logo.png" style="width: 200px;height: 70px"><br/>
+        </a>
+        <ul>
+            <li><a class="channel-item active" href="#">
+                <span class="">
+                    推荐
+                </span>
+            </a></li>
+            
+            <li><a  class="channel-item" href="#">
+                <span class="">
+                   用户列表
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    视频解题
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    热点题型
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    解题直播
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    热门题库
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    高手过招
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    一对一解题
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    入职实测
+                </span>
+            </a></li>
+
+        </ul>
+
+    </div>
+    <div class="center">
+        <ul class="news_list">
+            <li class="">
+                <div class="news-box">
+                    <div class="single-mode-lbox">
+                        <a href="#" target="_blank">
+                            <img src="img/question_store.png">
+                        </a>
+                    </div>
+                    <div class="single-mode-rbox">
+
+                        <div class="title-box">
+                            <a href="group/6760571446231040523/" class="link">阿里题库解析</a>
+                        </div>
+
+                        <div class="">
+                            <div class="bui-left footer-bar-left">
+                                <a href="#" target="_blank" class="footer-bar-action tag tag-style-other">
+                                    新鲜出炉
+                                </a>
+
+                                <a href="#" target="_blank" class="footer-bar-action media-avatar">
+                                    <img src="img/question_store.png">
+                                </a>
+                                <a href="#" target="_blank" class="footer-bar-action source">&nbsp;黑马论坛&nbsp;⋅
+                                </a>
+                                <a href="#" target="_blank" class="footer-bar-action source">&nbsp;5万+阅读&nbsp;⋅
+                                </a>
+                                <span class="footer-bar-action">&nbsp;23分钟前</span></div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+        <!-- <div class="loading" style="text-align: center; height: 80px">
+            <img src="img/loading2.gif" height="100%">
+        </div> -->
+         <!-- add  -->
+    <div id="user_table">
+       <table>
+		  <tr>
+		    <th>用户id22</th>
+		    <th>用户名</th>
+		    <th>邮箱</th>
+		    <th>操作</th>
+		  </tr>
+		  
+		
+      
+
+		  
+		</table>
+    </div>
+    </div>
+    <div class="right">
+        <div class="tt-input tt-input-group tt-input-group__append">
+            <div class="tt-input ">
+                <input type="text" placeholder="请输入要搜索内容" autocomplete="off" class="tt-input__inner">
+            </div>
+            <div class="tt-input">
+                <button type="button" class="tt-button tt-button--default">
+                    <span>搜索</span>
+                </button>
+            </div>
+        </div>
+    </div>
+   
+</div>
+</div>
+<script>
+    /* 脚本中创建对象,处理业务 */
+    new Vue({
+	el: '#app_user_list',
+	data: {
+		datalist: []
+	},
+    //数据渲染后的操作
+    created(){
+      // 点击事件
+	   
+    },
+    // 方法存放区
+    methods: {
+    	 addL(i){ 
+       	  this.datalist.push({});
+   			}
+    	/*var that=this;
+		convert:function () {
+			axios.post("{:url('indexApi/client')}").then(res => {
+				that.list=res
+			})
+		}*/
+		/*function i_list(data){
+			$.post("{:url('indexApi/client')}",data,function(e){
+	        	console.log(e)
+	        	that.list=e
+	        })
+		}*/
+    },
+    //页面加载完自动执行
+    mounted(){
+    	var that=this,data={}
+    	//console.log("===========================================")
+    	/* */
+        axios.get("/member/find",data).then(function(res){
+            // 赋值给data 中list
+        	console.log("==========================================="+res.data.data.length)
+        	var table_need = document.getElementById('user_table').getElementsByTagName('table')[0];
+            
+        	var content_array=res.data.data;
+        	for (var i = 0; i < content_array.length; i++) {
+        		
+        		var memb=content_array[i];
+        		/* */
+            	// Insert a row at the end of table
+            	var newRow = table_need.insertRow();
+
+            	// Insert a cell at the end of the row
+            	var newCell = newRow.insertCell();
+            	// Append a text node to the cell
+            	var newText = document.createTextNode(memb.id);
+            	newCell.appendChild(newText);
+            	
+            	var newCell2 = newRow.insertCell();        	
+            	newCell2.appendChild(document.createTextNode(memb.nickName));
+            	
+            	var newCell3 = newRow.insertCell();        	
+            	newCell3.appendChild(document.createTextNode(memb.email));
+            	
+            	
+            	var newCell4 = newRow.insertCell();        	
+            	
+            	 var taga = document.createElement("a");
+            	 taga.innerHTML = "删除";
+            	 taga.href="#";
+            	 //
+            	 var edit_tag = document.createElement("a");
+            	 edit_tag.innerHTML = "编辑";
+            	 edit_tag.href="edit_member.html?id="+memb.id;
+            	  newCell4.appendChild(taga);
+            	  newCell4.appendChild(edit_tag);
+            	
+            	/*
+            	var trone='<tr>';
+            	
+            	trone=trone+'<th>'+memb.id+'</th>';
+            	trone=trone+'<th>'+memb.nickName+'</th>';
+            	trone=trone+'<th>'+memb.email+'</th>';
+            	trone=trone+'<th>删除</th>';
+            	trone=trone+' </tr>';
+            
+            	table_need.append(trone);
+            	*/
+        	}
+        	
+ 		 
+        	
+        	
+        })
+        
+    }
+})
+</script>
+
+</body>
+</html>
