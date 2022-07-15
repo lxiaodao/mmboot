@@ -1,0 +1,51 @@
+
+
+A、没有springboot的时候，web工程大概
+B、基于springboot的web工程
+
+1、spring基本加载
+2、mybatis 基本数据操作
+3、maven
+4、git
+5、环境变量配置，window下java环境变量，
+   maven环境变量（ide，  命令行）
+
+
+use heima_mm;
+
+
+CREATE TABLE `tr_member` (
+  `id` varchar(100) NOT NULL,
+  `nick_name` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `gender` varchar(100) DEFAULT NULL,
+  `birthday` timestamp NULL DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `state` varchar(100) DEFAULT NULL,
+  `telephone` varchar(100) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `register_date` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `question` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) DEFAULT NULL,
+  `content` varchar(200) DEFAULT NULL,
+  `ask_userid` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `question_item` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `question_id` int DEFAULT NULL,
+  `content` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+  private String id;            //题目ID
+
+    private String subject;     //题干
+
+    private String type;       	//题目类型  1:单选，2：多选，3：简答
